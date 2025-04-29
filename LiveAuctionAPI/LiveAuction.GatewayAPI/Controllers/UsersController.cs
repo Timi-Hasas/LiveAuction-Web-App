@@ -1,5 +1,5 @@
 ﻿using LiveAuction.Common.DTO;
-using LiveAuction.Gateway.Services.Services;
+using LiveAuction.Gateway.Services.Services.Interfaces;
 using LiveAuction.GatewayAPI.Attributes;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,7 +39,7 @@ namespace LiveAuction.GatewayAPI.Controllers
         }
 
         [HttpPut("{userId}")]
-        public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] AuthUserDTO user)
+        public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] UserConfidentialDTO user)
         {
             user.Id = userId;
 

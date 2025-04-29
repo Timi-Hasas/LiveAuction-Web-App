@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
 
-        public UserDTO? Owner { get; set; }
+        public UserInfoDTO? Owner { get; set; }
 
         public Guid AuctionId { get; set; }
 

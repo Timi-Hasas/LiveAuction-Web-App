@@ -16,7 +16,7 @@
 
         public int AuctionTimeInMinutes { get; set; }
 
-        public UserDTO? Owner { get; set; }
+        public UserInfoDTO? Owner { get; set; }
 
         public IEnumerable<BiddingDTO>? Biddings { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using LiveAuction.Common.DTO;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace LiveAuction.Auctions.Models
@@ -6,6 +7,7 @@ namespace LiveAuction.Auctions.Models
     public class Owner
     {
         [BsonElement("id")]
+        [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid Id { get; set; }
 
         [BsonElement("email")]
@@ -17,15 +19,11 @@ namespace LiveAuction.Auctions.Models
         [BsonElement("lastName")]
         public string LastName { get; set; }
 
-        [BsonElement("birthDate")]
-        public DateTime BirthDate { get; set; }
-
-        public UserDTO ToDTO()
+        public UserInfoDTO ToDTO()
         {
-            return new UserDTO
+            return new UserInfoDTO
             {
                 Id = Id,
-                BirthDate = BirthDate,
                 Email = Email,
                 FirstName = FirstName,
                 LastName = LastName
@@ -35,7 +33,7 @@ namespace LiveAuction.Auctions.Models
 
     public static class OwnerDtoMappingExtensions
     {
-        public static Owner? FromDTO(this Owner currentOwner, UserDTO? owner)
+        public static Owner? FromDTO(this Owner currentOwner, UserInfoDTO? owner)
         {
             currentOwner ??= new Owner();
 
@@ -45,7 +43,6 @@ namespace LiveAuction.Auctions.Models
             }
 
             currentOwner.Id = owner.Id;
-            currentOwner.BirthDate = owner.BirthDate;
             currentOwner.Email = owner.Email;
             currentOwner.FirstName = owner.FirstName;
             currentOwner.LastName = owner.LastName;

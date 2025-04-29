@@ -1,11 +1,13 @@
 ﻿using LiveAuction.Common.DTO;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace LiveAuction.Auctions.Models
 {
     public class Auction
     {
-        [BsonElement("id")]
+        [BsonId]
+        [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid Id { get; set; }
 
         [BsonElement("name")]
@@ -36,6 +38,7 @@ namespace LiveAuction.Auctions.Models
         public Bidding? CurrentHighestBidding { get; set; }
 
         [BsonElement("timestamp")]
+        [BsonRepresentation(BsonType.DateTime)]
         public DateTime Timestamp { get; set; }
 
         public AuctionDTO ToDTO()

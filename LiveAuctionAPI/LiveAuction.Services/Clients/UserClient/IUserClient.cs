@@ -4,10 +4,10 @@ namespace LiveAuction.Gateway.Services.Clients.UserClient
 {
     public interface IUserClient
     {
-        Task<AuthUserDTO?> GetUserAsync(Guid userId);
+        Task<UserConfidentialDTO?> GetUserAsync(Guid userId);
 
-        Task<IEnumerable<AuthUserDTO>?> GetUsersAsync();
+        Task<IEnumerable<UserConfidentialDTO>?> GetUsersAsync();
 
-        Task<AuthUserDTO?> GetUserByEmailAsync(string email);
+        Task<UserConfidentialDTO?> GetUserByEmailAsync(string email);
     }
 }

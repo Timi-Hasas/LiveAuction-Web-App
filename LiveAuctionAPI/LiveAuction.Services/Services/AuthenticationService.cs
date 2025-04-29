@@ -1,4 +1,5 @@
 ﻿using LiveAuction.Common.DTO;
+using LiveAuction.Gateway.Services.Services.Interfaces;
 using LiveAuction.Gateway.Services.Utils;
 using BCryptNet = BCrypt.Net.BCrypt;
 
@@ -29,7 +30,7 @@ namespace LiveAuction.Gateway.Services.Services
             return jwtToken;
         }
 
-        public async Task RegisterAsync(AuthUserDTO user)
+        public async Task RegisterAsync(UserConfidentialDTO user)
         {
             await _userService.CreateUserAsync(user);
         }

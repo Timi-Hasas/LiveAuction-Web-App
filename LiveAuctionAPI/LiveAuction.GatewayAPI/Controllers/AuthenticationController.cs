@@ -1,5 +1,5 @@
 ﻿using LiveAuction.Common.DTO;
-using LiveAuction.Gateway.Services.Services;
+using LiveAuction.Gateway.Services.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LiveAuction.GatewayAPI.Controllers
@@ -26,7 +26,7 @@ namespace LiveAuction.GatewayAPI.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] AuthUserDTO user)
+        public async Task<IActionResult> Register([FromBody] UserConfidentialDTO user)
         {
             await _authenticationService.RegisterAsync(user);
 

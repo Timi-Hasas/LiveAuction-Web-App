@@ -12,17 +12,17 @@ namespace LiveAuction.Users.Services.DataReadServices
             _mongoDbService = mongoDbService;
         }
 
-        public async Task<AuthUserDTO?> GetUserAsync(Guid userId)
+        public async Task<UserConfidentialDTO?> GetUserAsync(Guid userId)
         {
             return await _mongoDbService.GetUserAsync(userId);
         }
 
-        public async Task<AuthUserDTO?> GetUserByEmailAsync(string email)
+        public async Task<UserConfidentialDTO?> GetUserByEmailAsync(string email)
         {
             return await _mongoDbService.GetUserByEmailAsync(email);
         }
 
-        public async Task<List<AuthUserDTO>?> GetUsersAsync()
+        public async Task<List<UserConfidentialDTO>?> GetUsersAsync()
         {
             return await _mongoDbService.GetUsersAsync();
         }

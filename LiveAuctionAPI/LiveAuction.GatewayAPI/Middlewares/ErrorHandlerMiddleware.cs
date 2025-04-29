@@ -1,6 +1,6 @@
 ﻿using LiveAuction.Common.Helpers.Exceptions;
+using Newtonsoft.Json;
 using System.Net;
-using System.Text.Json;
 
 namespace LiveAuction.GatewayAPI.Middlewares
 {
@@ -33,14 +33,19 @@ namespace LiveAuction.GatewayAPI.Middlewares
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         break;
                     case HttpRequestException e:
-                        response.StatusCode = (int)e.StatusCode;
+                        response.StatusCode = (int)HttpStatusCode.ServiceUnavailable;
                         break;
                     default:
                         response.StatusCode = (int)HttpStatusCode.InternalServerError;
                         break;
                 }
 
-                var result = JsonSerializer.Serialize(new { message = error?.Message });
+                var result = JsonConvert.SerializeObject(new 
+                { 
+                    error?.Message,
+                    error?.StackTrace
+                });
+
                 await response.WriteAsync(result);
             }
         }

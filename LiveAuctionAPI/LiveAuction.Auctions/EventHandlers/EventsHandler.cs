@@ -1,6 +1,6 @@
 ﻿using LiveAuction.Auctions.Services.DataWriteServices;
 using LiveAuction.Common.Events.AuctionEvents;
-using LiveAuction.Common.Events.BidEvents;
+using LiveAuction.Common.Events.BiddingEvents;
 using MassTransit;
 
 namespace LiveAuction.Auctions.EventHandlers

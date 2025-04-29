@@ -4,6 +4,6 @@ namespace LiveAuction.Common.Events.UserEvents
 {
     public class UserUpdated
     {
-        public AuthUserDTO User { get; set; }
+        public UserConfidentialDTO User { get; set; }
     }
 }

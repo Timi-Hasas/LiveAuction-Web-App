@@ -1,4 +1,4 @@
-﻿using LiveAuction.Gateway.Services.Services;
+﻿using LiveAuction.Gateway.Services.Services.Interfaces;
 using LiveAuction.Gateway.Services.Utils;
 
 namespace LiveAuction.GatewayAPI.Middlewares

@@ -1,12 +1,12 @@
 ﻿using LiveAuction.Common.DTO;
 
-namespace LiveAuction.Users.Services.MongoDbService
+namespace LiveAuction.Gateway.Services.Services.Interfaces
 {
-    public interface IMongoDbService
+    public interface IUserService
     {
         Task<UserConfidentialDTO?> GetUserAsync(Guid userId);
 
-        Task<List<UserConfidentialDTO>?> GetUsersAsync();
+        Task<IEnumerable<UserConfidentialDTO>?> GetUsersAsync();
 
         Task CreateUserAsync(UserConfidentialDTO user);
 

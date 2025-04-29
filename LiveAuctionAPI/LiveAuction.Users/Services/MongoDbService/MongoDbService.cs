@@ -13,7 +13,7 @@ namespace LiveAuction.Users.Services.MongoDbService
             _userRepository = userRepository;
         }
 
-        public async Task CreateUserAsync(AuthUserDTO user)
+        public async Task CreateUserAsync(UserConfidentialDTO user)
         {
             var mongoUser = new User
             {
@@ -33,11 +33,11 @@ namespace LiveAuction.Users.Services.MongoDbService
             await _userRepository.DeleteUserAsync(userId);
         }
 
-        public async Task<AuthUserDTO?> GetUserAsync(Guid userId)
+        public async Task<UserConfidentialDTO?> GetUserAsync(Guid userId)
         {
             var user = await _userRepository.GetUserAsync(userId);
 
-            var result = user == null ? null : new AuthUserDTO
+            var result = user == null ? null : new UserConfidentialDTO
             {
                 Id = user.Id,
                 BirthDate = user.BirthDate,
@@ -51,11 +51,11 @@ namespace LiveAuction.Users.Services.MongoDbService
             return result;
         }
 
-        public async Task<AuthUserDTO?> GetUserByEmailAsync(string email)
+        public async Task<UserConfidentialDTO?> GetUserByEmailAsync(string email)
         {
             var user = await _userRepository.GetUserByEmailAsync(email);
 
-            var result = user == null ? null : new AuthUserDTO
+            var result = user == null ? null : new UserConfidentialDTO
             {
                 Id = user.Id,
                 BirthDate = user.BirthDate,
@@ -68,11 +68,11 @@ namespace LiveAuction.Users.Services.MongoDbService
             return result;
         }
 
-        public async Task<List<AuthUserDTO>?> GetUsersAsync()
+        public async Task<List<UserConfidentialDTO>?> GetUsersAsync()
         {
             var users = await _userRepository.GetUsersAsync();
 
-            var result = users?.Select(user => new AuthUserDTO
+            var result = users?.Select(user => new UserConfidentialDTO
             {
                 Id = user.Id,
                 BirthDate = user.BirthDate,
@@ -85,7 +85,7 @@ namespace LiveAuction.Users.Services.MongoDbService
             return result;  
         }
 
-        public async Task UpdateUserAsync(AuthUserDTO user)
+        public async Task UpdateUserAsync(UserConfidentialDTO user)
         {
             var mongoUser = new User
             {

@@ -1,6 +1,6 @@
 ﻿using LiveAuction.Common.DTO;
 
-namespace LiveAuction.Common.Events.BidEvents
+namespace LiveAuction.Common.Events.BiddingEvents
 {
     public class BiddingPlaced
     {

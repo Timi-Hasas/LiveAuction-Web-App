@@ -1,4 +1,5 @@
 ﻿using LiveAuction.Common.DTO;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace LiveAuction.Auctions.Models
@@ -6,18 +7,21 @@ namespace LiveAuction.Auctions.Models
     public class Bidding
     {
         [BsonElement("id")]
+        [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid Id { get; set; }
 
         [BsonElement("owner")]
         public Owner? Owner { get; set; }
 
         [BsonElement("auctionId")]
+        [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid AuctionId { get; set; }
 
         [BsonElement("amount")]
         public decimal Amount { get; set; }
 
         [BsonElement("timestamp")]
+        [BsonRepresentation(BsonType.DateTime)]
         public DateTime Timestamp { get; set; }
 
         [BsonElement("isActive")]

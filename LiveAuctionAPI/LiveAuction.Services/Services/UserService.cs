@@ -2,6 +2,7 @@
 using LiveAuction.Common.Events.UserEvents;
 using LiveAuction.Common.Helpers.Exceptions;
 using LiveAuction.Gateway.Services.Clients.UserClient;
+using LiveAuction.Gateway.Services.Services.Interfaces;
 using MassTransit;
 using BCryptNet = BCrypt.Net.BCrypt;
 
@@ -17,7 +18,7 @@ namespace LiveAuction.Gateway.Services.Services
             _userClient = userClient;
             _bus = bus;
         }
-        public async Task CreateUserAsync(AuthUserDTO user)
+        public async Task CreateUserAsync(UserConfidentialDTO user)
         {
             var conflictingUser = _userClient.GetUserByEmailAsync(user.Email);
             if (conflictingUser != null)
@@ -45,22 +46,22 @@ namespace LiveAuction.Gateway.Services.Services
             await _bus.Publish(userDeleted);
         }
 
-        public async Task<AuthUserDTO?> GetUserAsync(Guid userId)
+        public async Task<UserConfidentialDTO?> GetUserAsync(Guid userId)
         {
             return await _userClient.GetUserAsync(userId);
         }
 
-        public async Task<AuthUserDTO?> GetUserByEmailAsync(string email)
+        public async Task<UserConfidentialDTO?> GetUserByEmailAsync(string email)
         {
             return await _userClient.GetUserByEmailAsync(email);
         }
 
-        public async Task<IEnumerable<AuthUserDTO>?> GetUsersAsync()
+        public async Task<IEnumerable<UserConfidentialDTO>?> GetUsersAsync()
         {
             return await _userClient.GetUsersAsync();
         }
 
-        public async Task UpdateUserAsync(AuthUserDTO user)
+        public async Task UpdateUserAsync(UserConfidentialDTO user)
         {
             var conflictingUser = _userClient.GetUserByEmailAsync(user.Email);
             if (conflictingUser != null)
