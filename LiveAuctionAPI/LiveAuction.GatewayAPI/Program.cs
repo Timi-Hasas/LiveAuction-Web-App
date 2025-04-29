@@ -57,6 +57,7 @@ namespace LiveAuction.GatewayAPI
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
             builder.Services.AddScoped<IAuctionService, AuctionService>();
+            builder.Services.AddScoped<IBiddingService, BiddingService>();
 
             // Clients
             builder.Services.AddScoped<IUserClient, UserClient>();

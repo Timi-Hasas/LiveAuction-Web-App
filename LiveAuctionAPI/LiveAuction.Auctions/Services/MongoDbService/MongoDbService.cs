@@ -13,7 +13,7 @@ namespace LiveAuction.Auctions.Services.MongoDbService
             _auctionRepository = auctionRepository;
         }
 
-        public async Task CreateAuctionAsync(AuctionDTO auction)
+        public async Task CreateAuctionAsync(AuctionBiddingDTO auction)
         {
             var mongoAuction = new Auction().FromDTO(auction);
 
@@ -30,7 +30,7 @@ namespace LiveAuction.Auctions.Services.MongoDbService
             await _auctionRepository.DeleteAuctionAsync(auctionId);
         }
 
-        public async Task<AuctionDTO?> GetAuctionAsync(Guid auctionId)
+        public async Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId)
         {
             var auction = await _auctionRepository.GetAuctionAsync(auctionId);
 
@@ -42,7 +42,7 @@ namespace LiveAuction.Auctions.Services.MongoDbService
             return auction.ToDTO();
         }
 
-        public async Task<List<AuctionDTO>?> GetAuctionsAsync()
+        public async Task<List<AuctionBiddingDTO>?> GetAuctionsAsync()
         {
             var auctions = await _auctionRepository.GetAuctionsAsync();
 
@@ -51,7 +51,7 @@ namespace LiveAuction.Auctions.Services.MongoDbService
             return result;
         }
 
-        public async Task UpdateAuctionAsync(AuctionDTO auction)
+        public async Task UpdateAuctionAsync(AuctionBiddingDTO auction)
         {
             var mongoAuction = new Auction().FromDTO(auction);
 

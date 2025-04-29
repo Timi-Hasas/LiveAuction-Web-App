@@ -8,6 +8,7 @@ namespace LiveAuction.Auctions.EventHandlers
         IConsumer<AuctionCreated>,
         IConsumer<AuctionUpdated>,
         IConsumer<AuctionDeleted>,
+        IConsumer<AuctionCompleted>,
         IConsumer<BiddingPlaced>
     {
     }

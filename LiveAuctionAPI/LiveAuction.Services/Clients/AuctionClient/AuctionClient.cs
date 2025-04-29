@@ -8,10 +8,10 @@ namespace LiveAuction.Gateway.Services.Clients.AuctionClient
         {
         }
 
-        public async Task<AuctionDTO?> GetAuctionAsync(Guid auctionId)
-            => await GetAsync<AuctionDTO>(AuctionEndpoints.GetAuctionEndpoint(auctionId));
+        public async Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId)
+            => await GetAsync<AuctionBiddingDTO>(AuctionEndpoints.GetAuctionEndpoint(auctionId));
 
-        public async Task<IEnumerable<AuctionDTO>?> GetAuctionsAsync()
-            => await GetAsync<IEnumerable<AuctionDTO>>(AuctionEndpoints.GetAuctionsEndpoint());
+        public async Task<IEnumerable<AuctionBiddingDTO>?> GetAuctionsAsync()
+            => await GetAsync<IEnumerable<AuctionBiddingDTO>>(AuctionEndpoints.GetAuctionsEndpoint());
     }
 }

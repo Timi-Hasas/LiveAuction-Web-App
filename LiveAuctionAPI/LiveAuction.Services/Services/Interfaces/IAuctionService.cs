@@ -4,14 +4,16 @@ namespace LiveAuction.Gateway.Services.Services.Interfaces
 {
     public interface IAuctionService
     {
-        Task<AuctionDTO?> GetAuctionAsync(Guid auctionId);
+        Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId);
 
-        Task<IEnumerable<AuctionDTO>?> GetAuctionsAsync();
+        Task<IEnumerable<AuctionBiddingDTO>?> GetAuctionsAsync();
 
         Task CreateAuctionAsync(AuctionDTO auction);
 
         Task UpdateAuctionAsync(AuctionDTO auction);
 
         Task DeleteAuctionAsync(Guid auctionId);
+
+        Task CompleteAuctionAsync(Guid auctionId);
     }
 }

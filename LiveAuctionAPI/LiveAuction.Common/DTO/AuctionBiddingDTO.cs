@@ -1,6 +1,6 @@
 ﻿namespace LiveAuction.Common.DTO
 {
-    public class AuctionDTO
+    public class AuctionBiddingDTO
     {
         public Guid Id { get; set; }
 
@@ -16,8 +16,14 @@
 
         public int AuctionTimeInMinutes { get; set; }
 
-        public Guid OwnerId { get; set; }
+        public UserInfoDTO? Owner { get; set; }
+
+        public List<BiddingDTO>? Biddings { get; set; }
+
+        public BiddingDTO? CurrentHighestBidding { get; set; }
 
         public DateTime Timestamp { get; set; }
+
+        public bool IsCompleted { get; set; }
     }
 }

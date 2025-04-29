@@ -56,6 +56,14 @@ namespace LiveAuction.GatewayAPI.Controllers
             return Accepted();
         }
 
+        [HttpPut("{auctionId}/complete")]
+        public async Task<IActionResult> CompleteAuction(Guid auctionId)
+        {
+            await _auctionService.CompleteAuctionAsync(auctionId);
+
+            return Accepted();
+        }
+
         [HttpDelete("{auctionId}")]
         public async Task<IActionResult> DeleteAuction(Guid auctionId)
         {

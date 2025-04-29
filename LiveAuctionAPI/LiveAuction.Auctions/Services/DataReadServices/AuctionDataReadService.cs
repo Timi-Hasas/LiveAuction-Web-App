@@ -12,12 +12,12 @@ namespace LiveAuction.Auctions.Services.DataReadServices
             _mongoDbService = mongoDbService;
         }
 
-        public async Task<AuctionDTO?> GetAuctionAsync(Guid auctionId)
+        public async Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId)
         {
             return await _mongoDbService.GetAuctionAsync(auctionId);
         }
 
-        public async Task<List<AuctionDTO>?> GetAuctionsAsync()
+        public async Task<List<AuctionBiddingDTO>?> GetAuctionsAsync()
         {
             return await _mongoDbService.GetAuctionsAsync();
         }

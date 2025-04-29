@@ -5,10 +5,14 @@ namespace LiveAuction.Auctions.Services.DataWriteServices
     public interface IAuctionDataWriteService
     {
 
-        Task CreateAuctionAsync(AuctionDTO auction);
+        Task CreateAuctionAsync(AuctionBiddingDTO auction);
 
-        Task UpdateAuctionAsync(AuctionDTO auction);
+        Task UpdateAuctionAsync(AuctionBiddingDTO auction);
 
         Task DeleteAuctionAsync(Guid auctionId);
+
+        Task PlaceAuctionBiddingAsync(BiddingDTO bidding);
+
+        Task CompleteAuctionAsync(Guid auctionId);
     }
 }

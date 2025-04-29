@@ -4,8 +4,8 @@ namespace LiveAuction.Gateway.Services.Clients.AuctionClient
 {
     public interface IAuctionClient
     {
-        Task<AuctionDTO?> GetAuctionAsync(Guid auctionId);
+        Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId);
 
-        Task<IEnumerable<AuctionDTO>?> GetAuctionsAsync();
+        Task<IEnumerable<AuctionBiddingDTO>?> GetAuctionsAsync();
     }
 }

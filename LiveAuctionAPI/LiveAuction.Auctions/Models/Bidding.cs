@@ -6,7 +6,7 @@ namespace LiveAuction.Auctions.Models
 {
     public class Bidding
     {
-        [BsonElement("id")]
+        [BsonId]
         [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid Id { get; set; }
 
@@ -27,9 +27,6 @@ namespace LiveAuction.Auctions.Models
         [BsonElement("isActive")]
         public bool IsActive { get; set; }
 
-        [BsonElement("isCurrentHighestBid")]
-        public bool IsCurrentHighestBid { get; set; }
-
         public BiddingDTO ToDTO()
         {
             return new BiddingDTO
@@ -38,7 +35,6 @@ namespace LiveAuction.Auctions.Models
                 Amount = Amount,
                 AuctionId = AuctionId,
                 IsActive = IsActive,
-                IsCurrentHighestBid = IsCurrentHighestBid,
                 Timestamp = Timestamp,
                 Owner = Owner?.ToDTO()
             };
@@ -60,7 +56,6 @@ namespace LiveAuction.Auctions.Models
             currenBidding.Amount = bidding.Amount;
             currenBidding.AuctionId = bidding.AuctionId;
             currenBidding.IsActive = bidding.IsActive;
-            currenBidding.IsCurrentHighestBid = bidding.IsCurrentHighestBid;
             currenBidding.Timestamp = bidding.Timestamp;
             currenBidding.Owner = new Owner().FromDTO(bidding.Owner);
 

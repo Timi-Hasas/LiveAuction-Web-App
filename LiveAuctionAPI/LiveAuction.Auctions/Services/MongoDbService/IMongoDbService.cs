@@ -4,13 +4,13 @@ namespace LiveAuction.Auctions.Services.MongoDbService
 {
     public interface IMongoDbService
     {
-        Task<AuctionDTO?> GetAuctionAsync(Guid auctionId);
+        Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId);
 
-        Task<List<AuctionDTO>?> GetAuctionsAsync();
+        Task<List<AuctionBiddingDTO>?> GetAuctionsAsync();
 
-        Task CreateAuctionAsync(AuctionDTO auction);
+        Task CreateAuctionAsync(AuctionBiddingDTO auction);
 
-        Task UpdateAuctionAsync(AuctionDTO auction);
+        Task UpdateAuctionAsync(AuctionBiddingDTO auction);
 
         Task DeleteAuctionAsync(Guid auctionId);
     }

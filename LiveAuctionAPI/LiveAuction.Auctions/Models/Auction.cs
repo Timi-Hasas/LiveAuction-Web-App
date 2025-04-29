@@ -41,9 +41,12 @@ namespace LiveAuction.Auctions.Models
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime Timestamp { get; set; }
 
-        public AuctionDTO ToDTO()
+        [BsonElement("isCompleted")]
+        public bool IsCompleted { get; set; }
+
+        public AuctionBiddingDTO ToDTO()
         {
-            return new AuctionDTO
+            return new AuctionBiddingDTO
             {
                 Id = Id,
                 AuctionedItemName = AuctionedItemName,
@@ -53,6 +56,7 @@ namespace LiveAuction.Auctions.Models
                 Name = Name,
                 StartingPrice = StartingPrice,
                 Timestamp = Timestamp,
+                IsCompleted = IsCompleted,
                 CurrentHighestBidding = CurrentHighestBidding?.ToDTO(),
                 Owner = Owner?.ToDTO(),
                 Biddings = Biddings?.Select(b => b.ToDTO()).ToList()
@@ -62,7 +66,7 @@ namespace LiveAuction.Auctions.Models
 
     public static class AuctionDtoMappingExtensions
     {
-        public static Auction? FromDTO(this Auction currentAuction, AuctionDTO auction)
+        public static Auction? FromDTO(this Auction currentAuction, AuctionBiddingDTO auction)
         {
             currentAuction ??= new Auction();
 
@@ -79,9 +83,10 @@ namespace LiveAuction.Auctions.Models
             currentAuction.Name = auction.Name;
             currentAuction.StartingPrice = auction.StartingPrice;
             currentAuction.Timestamp = auction.Timestamp;
+            currentAuction.IsCompleted = auction.IsCompleted;
             currentAuction.CurrentHighestBidding = (new Bidding())?.FromDTO(auction.CurrentHighestBidding);
             currentAuction.Owner = (new Owner()).FromDTO(auction.Owner);
-            currentAuction.Biddings = auction.Biddings?.Select(b => new Bidding().FromDTO(auction.CurrentHighestBidding)).ToList();
+            currentAuction.Biddings = auction.Biddings.Select(b => new Bidding()?.FromDTO(b)).ToList();
 
             return currentAuction;
         }

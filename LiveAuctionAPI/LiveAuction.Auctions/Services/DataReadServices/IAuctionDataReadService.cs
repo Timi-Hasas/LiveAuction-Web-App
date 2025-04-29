@@ -4,8 +4,8 @@ namespace LiveAuction.Auctions.Services.DataReadServices
 {
     public interface IAuctionDataReadService
     {
-        Task<AuctionDTO?> GetAuctionAsync(Guid auctionId);
+        Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId);
 
-        Task<List<AuctionDTO>?> GetAuctionsAsync();
+        Task<List<AuctionBiddingDTO>?> GetAuctionsAsync();
     }
 }

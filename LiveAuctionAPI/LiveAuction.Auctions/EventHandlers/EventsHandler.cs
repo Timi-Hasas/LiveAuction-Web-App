@@ -29,9 +29,14 @@ namespace LiveAuction.Auctions.EventHandlers
             await _auctionService.DeleteAuctionAsync(context.Message.AuctionId);
         }
 
+        public async Task Consume(ConsumeContext<AuctionCompleted> context)
+        {
+            await _auctionService.CompleteAuctionAsync(context.Message.AuctionId);
+        }
+
         public async Task Consume(ConsumeContext<BiddingPlaced> context)
         {
-            throw new NotImplementedException();
+            await _auctionService.PlaceAuctionBiddingAsync(context.Message.Bidding);
         }
     }
 }

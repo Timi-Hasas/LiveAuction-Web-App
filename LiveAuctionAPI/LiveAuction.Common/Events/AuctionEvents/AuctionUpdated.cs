@@ -4,6 +4,6 @@ namespace LiveAuction.Common.Events.AuctionEvents
 {
     public class AuctionUpdated
     {
-        public AuctionDTO Auction { get; set; }
+        public AuctionBiddingDTO Auction { get; set; }
     }
 }

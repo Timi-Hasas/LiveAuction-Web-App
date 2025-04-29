@@ -6,7 +6,7 @@ namespace LiveAuction.Auctions.Models
 {
     public class Owner
     {
-        [BsonElement("id")]
+        [BsonId]
         [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid Id { get; set; }
 
