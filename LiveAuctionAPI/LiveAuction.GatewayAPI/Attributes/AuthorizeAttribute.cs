@@ -21,7 +21,7 @@ namespace LiveAuction.GatewayAPI.Attributes
                 context.Result = unauthorizedResult;
             }
 
-            var userDto = user as UserDTO;
+            var userDto = user as AuthUserDTO;
             if (userDto == null)
             {
                 context.Result = unauthorizedResult;

@@ -21,7 +21,7 @@ namespace LiveAuction.Gateway.Services.Utils
             _appSettings = appSettings.Value;
         }
 
-        public string GenerateJwtToken(UserDTO user)
+        public string GenerateJwtToken(AuthUserDTO user)
         {
             // generate token that is valid for 7 days
             var tokenHandler = new JwtSecurityTokenHandler();

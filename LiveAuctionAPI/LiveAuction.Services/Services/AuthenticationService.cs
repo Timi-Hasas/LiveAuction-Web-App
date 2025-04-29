@@ -29,7 +29,7 @@ namespace LiveAuction.Gateway.Services.Services
             return jwtToken;
         }
 
-        public async Task RegisterAsync(UserDTO user)
+        public async Task RegisterAsync(AuthUserDTO user)
         {
             await _userService.CreateUserAsync(user);
         }

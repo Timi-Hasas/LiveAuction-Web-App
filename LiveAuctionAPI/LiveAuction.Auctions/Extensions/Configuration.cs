@@ -1,12 +1,12 @@
-﻿using LiveAuction.Users.EventHandlers;
-using LiveAuction.Users.Repositories;
-using LiveAuction.Users.Services.DataReadServices;
-using LiveAuction.Users.Services.DataWriteServices;
-using LiveAuction.Users.Services.MongoDbService;
+﻿using LiveAuction.Auctions.EventHandlers;
+using LiveAuction.Auctions.Repositories;
+using LiveAuction.Auctions.Services.DataReadServices;
+using LiveAuction.Auctions.Services.DataWriteServices;
+using LiveAuction.Auctions.Services.MongoDbService;
 using MassTransit;
 using MongoDB.Driver;
 
-namespace LiveAuction.Users.Extensions
+namespace LiveAuction.Auctions.Extensions
 {
     public static class Configuration
     {
@@ -17,17 +17,17 @@ namespace LiveAuction.Users.Extensions
                 .AddEndpointsApiExplorer()
                 .AddSwaggerGen();
 
-            builder.Services.AddScoped<IUserDataWriteService, UserDataWriteService>();
-            builder.Services.AddScoped<IUserDataReadService, UserDataReadService>();
+            builder.Services.AddScoped<IAuctionDataWriteService, AuctionDataWriteService>();
+            builder.Services.AddScoped<IAuctionDataReadService, AuctionDataReadService>();
             builder.Services.AddScoped<IMongoDbService, MongoDbService>();
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
         }
 
         public static void RegisterDatabase(this WebApplicationBuilder builder)
         {
             var mongoConnectionString = builder.Configuration.GetConnectionString("MongoDb");
             var mongoClient = new MongoClient(mongoConnectionString);
-            var database = mongoClient.GetDatabase("users_db");
+            var database = mongoClient.GetDatabase("auctions_db");
 
             builder.Services.AddSingleton<IMongoClient>(mongoClient);
             builder.Services.AddSingleton(database);
@@ -35,7 +35,6 @@ namespace LiveAuction.Users.Extensions
 
         public static void RegisterRabbitMQ(this WebApplicationBuilder builder)
         {
-
             builder.Services.AddMassTransit(x =>
             {
                 x.AddConsumer<EventsHandler>();
@@ -47,7 +46,7 @@ namespace LiveAuction.Users.Extensions
                         h.Username("guest");
                         h.Password("guest");
                     });
-                    cfg.ReceiveEndpoint("LiveAuction.Users", ep =>
+                    cfg.ReceiveEndpoint("LiveAuction.Auctions", ep =>
                     {
                         ep.PrefetchCount = 16;
                         ep.UseMessageRetry(r => r.Interval(2, 100));
@@ -69,3 +68,4 @@ namespace LiveAuction.Users.Extensions
         }
     }
 }
+

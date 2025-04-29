@@ -26,7 +26,7 @@ namespace LiveAuction.GatewayAPI.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] UserDTO user)
+        public async Task<IActionResult> Register([FromBody] AuthUserDTO user)
         {
             await _authenticationService.RegisterAsync(user);
 

@@ -9,13 +9,13 @@ namespace LiveAuction.Gateway.Services.Clients.UserClient
         {
         }
 
-        public async Task<UserDTO?> GetUserAsync(Guid userId)
-            => await GetAsync<UserDTO>(UserEndpoints.GetUserEndpoint(userId));
+        public async Task<AuthUserDTO?> GetUserAsync(Guid userId)
+            => await GetAsync<AuthUserDTO>(UserEndpoints.GetUserEndpoint(userId));
 
-        public async Task<UserDTO?> GetUserByEmailAsync(string email)
-            => await GetAsync<UserDTO>(UserEndpoints.GetUserByEmailEndpoint(email));
+        public async Task<AuthUserDTO?> GetUserByEmailAsync(string email)
+            => await GetAsync<AuthUserDTO>(UserEndpoints.GetUserByEmailEndpoint(email));
 
-        public async Task<IEnumerable<UserDTO>?> GetUsersAsync()
-            => await GetAsync<IEnumerable<UserDTO>>(UserEndpoints.GetUsersEndpoint());
+        public async Task<IEnumerable<AuthUserDTO>?> GetUsersAsync()
+            => await GetAsync<IEnumerable<AuthUserDTO>>(UserEndpoints.GetUsersEndpoint());
     }
 }

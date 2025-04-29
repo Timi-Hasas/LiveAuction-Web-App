@@ -3,7 +3,7 @@ using MassTransit;
 
 namespace LiveAuction.Users.EventHandlers
 {
-    public interface IEventHandler :
+    public interface IEventsHandler :
         IConsumer<UserCreated>,
         IConsumer<UserUpdated>,
         IConsumer<UserDeleted>

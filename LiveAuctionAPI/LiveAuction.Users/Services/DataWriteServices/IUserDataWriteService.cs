@@ -4,9 +4,9 @@ namespace LiveAuction.Users.Services.DataWriteServices
 {
     public interface IUserDataWriteService
     {
-        Task CreateUserAsync(UserDTO user);
+        Task CreateUserAsync(AuthUserDTO user);
 
-        Task UpdateUserAsync(UserDTO user);
+        Task UpdateUserAsync(AuthUserDTO user);
 
         Task DeleteUserAsync(Guid userId);
     }

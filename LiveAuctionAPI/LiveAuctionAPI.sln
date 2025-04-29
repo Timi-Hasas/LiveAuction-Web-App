@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveAuction.Common", "LiveA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveAuction.Notifications", "LiveAuction.Notifications\LiveAuction.Notifications.csproj", "{7E03185D-05E4-44E3-9559-FF5DF2DA8CE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveAuction.Auctions", "LiveAuction.Auctions\LiveAuction.Auctions.csproj", "{53FFD0D6-5D14-4F5E-9E09-2DA5052E71B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{7E03185D-05E4-44E3-9559-FF5DF2DA8CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E03185D-05E4-44E3-9559-FF5DF2DA8CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E03185D-05E4-44E3-9559-FF5DF2DA8CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53FFD0D6-5D14-4F5E-9E09-2DA5052E71B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FFD0D6-5D14-4F5E-9E09-2DA5052E71B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FFD0D6-5D14-4F5E-9E09-2DA5052E71B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FFD0D6-5D14-4F5E-9E09-2DA5052E71B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

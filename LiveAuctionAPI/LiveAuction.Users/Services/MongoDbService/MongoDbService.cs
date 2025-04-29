@@ -13,7 +13,7 @@ namespace LiveAuction.Users.Services.MongoDbService
             _userRepository = userRepository;
         }
 
-        public async Task CreateUserAsync(UserDTO user)
+        public async Task CreateUserAsync(AuthUserDTO user)
         {
             var mongoUser = new User
             {
@@ -33,11 +33,11 @@ namespace LiveAuction.Users.Services.MongoDbService
             await _userRepository.DeleteUserAsync(userId);
         }
 
-        public async Task<UserDTO?> GetUserAsync(Guid userId)
+        public async Task<AuthUserDTO?> GetUserAsync(Guid userId)
         {
             var user = await _userRepository.GetUserAsync(userId);
 
-            var result = user == null ? null : new UserDTO
+            var result = user == null ? null : new AuthUserDTO
             {
                 Id = user.Id,
                 BirthDate = user.BirthDate,
@@ -51,11 +51,11 @@ namespace LiveAuction.Users.Services.MongoDbService
             return result;
         }
 
-        public async Task<UserDTO?> GetUserByEmailAsync(string email)
+        public async Task<AuthUserDTO?> GetUserByEmailAsync(string email)
         {
             var user = await _userRepository.GetUserByEmailAsync(email);
 
-            var result = user == null ? null : new UserDTO
+            var result = user == null ? null : new AuthUserDTO
             {
                 Id = user.Id,
                 BirthDate = user.BirthDate,
@@ -68,11 +68,11 @@ namespace LiveAuction.Users.Services.MongoDbService
             return result;
         }
 
-        public async Task<List<UserDTO>?> GetUsersAsync()
+        public async Task<List<AuthUserDTO>?> GetUsersAsync()
         {
             var users = await _userRepository.GetUsersAsync();
 
-            var result = users?.Select(user => new UserDTO
+            var result = users?.Select(user => new AuthUserDTO
             {
                 Id = user.Id,
                 BirthDate = user.BirthDate,
@@ -85,7 +85,7 @@ namespace LiveAuction.Users.Services.MongoDbService
             return result;  
         }
 
-        public async Task UpdateUserAsync(UserDTO user)
+        public async Task UpdateUserAsync(AuthUserDTO user)
         {
             var mongoUser = new User
             {

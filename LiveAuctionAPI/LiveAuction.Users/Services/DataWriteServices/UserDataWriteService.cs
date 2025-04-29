@@ -12,7 +12,7 @@ namespace LiveAuction.Users.Services.DataWriteServices
             _mongoDbService = mongoDbService;
         }
 
-        public async Task CreateUserAsync(UserDTO user)
+        public async Task CreateUserAsync(AuthUserDTO user)
         {
             await _mongoDbService.CreateUserAsync(user);
         }
@@ -22,7 +22,7 @@ namespace LiveAuction.Users.Services.DataWriteServices
             await _mongoDbService.DeleteUserAsync(userId);
         }
 
-        public async Task UpdateUserAsync(UserDTO user)
+        public async Task UpdateUserAsync(AuthUserDTO user)
         {
             await _mongoDbService.UpdateUserAsync(user);
         }

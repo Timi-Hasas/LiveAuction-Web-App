@@ -39,7 +39,7 @@ namespace LiveAuction.GatewayAPI.Controllers
         }
 
         [HttpPut("{userId}")]
-        public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] UserDTO user)
+        public async Task<IActionResult> UpdateUser(Guid userId, [FromBody] AuthUserDTO user)
         {
             user.Id = userId;
 

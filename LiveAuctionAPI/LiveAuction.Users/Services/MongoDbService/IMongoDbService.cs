@@ -4,16 +4,16 @@ namespace LiveAuction.Users.Services.MongoDbService
 {
     public interface IMongoDbService
     {
-        Task<UserDTO?> GetUserAsync(Guid userId);
+        Task<AuthUserDTO?> GetUserAsync(Guid userId);
 
-        Task<List<UserDTO>?> GetUsersAsync();
+        Task<List<AuthUserDTO>?> GetUsersAsync();
 
-        Task CreateUserAsync(UserDTO user);
+        Task CreateUserAsync(AuthUserDTO user);
 
-        Task UpdateUserAsync(UserDTO user);
+        Task UpdateUserAsync(AuthUserDTO user);
 
         Task DeleteUserAsync(Guid userId);
 
-        Task<UserDTO?> GetUserByEmailAsync(string email);
+        Task<AuthUserDTO?> GetUserByEmailAsync(string email);
     }
 }

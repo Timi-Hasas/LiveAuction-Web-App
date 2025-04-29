@@ -4,10 +4,10 @@ namespace LiveAuction.Users.Services.DataReadServices
 {
     public interface IUserDataReadService
     {
-        Task<UserDTO?> GetUserAsync(Guid userId);
+        Task<AuthUserDTO?> GetUserAsync(Guid userId);
 
-        Task<UserDTO?> GetUserByEmailAsync(string email);
+        Task<AuthUserDTO?> GetUserByEmailAsync(string email);
 
-        Task<List<UserDTO>?> GetUsersAsync();
+        Task<List<AuthUserDTO>?> GetUsersAsync();
     }
 }

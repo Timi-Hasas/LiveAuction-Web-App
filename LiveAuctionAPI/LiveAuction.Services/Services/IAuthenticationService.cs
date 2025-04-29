@@ -6,6 +6,6 @@ namespace LiveAuction.Gateway.Services.Services
     {
         Task<string> LoginAsync(LoginDTO login);
 
-        Task RegisterAsync(UserDTO user);
+        Task RegisterAsync(AuthUserDTO user);
     }
 }

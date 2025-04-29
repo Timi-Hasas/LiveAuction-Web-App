@@ -17,7 +17,7 @@ namespace LiveAuction.Gateway.Services.Services
             _userClient = userClient;
             _bus = bus;
         }
-        public async Task CreateUserAsync(UserDTO user)
+        public async Task CreateUserAsync(AuthUserDTO user)
         {
             var conflictingUser = _userClient.GetUserByEmailAsync(user.Email);
             if (conflictingUser != null)
@@ -45,22 +45,22 @@ namespace LiveAuction.Gateway.Services.Services
             await _bus.Publish(userDeleted);
         }
 
-        public async Task<UserDTO?> GetUserAsync(Guid userId)
+        public async Task<AuthUserDTO?> GetUserAsync(Guid userId)
         {
             return await _userClient.GetUserAsync(userId);
         }
 
-        public async Task<UserDTO?> GetUserByEmailAsync(string email)
+        public async Task<AuthUserDTO?> GetUserByEmailAsync(string email)
         {
             return await _userClient.GetUserByEmailAsync(email);
         }
 
-        public async Task<IEnumerable<UserDTO>?> GetUsersAsync()
+        public async Task<IEnumerable<AuthUserDTO>?> GetUsersAsync()
         {
             return await _userClient.GetUsersAsync();
         }
 
-        public async Task UpdateUserAsync(UserDTO user)
+        public async Task UpdateUserAsync(AuthUserDTO user)
         {
             var conflictingUser = _userClient.GetUserByEmailAsync(user.Email);
             if (conflictingUser != null)

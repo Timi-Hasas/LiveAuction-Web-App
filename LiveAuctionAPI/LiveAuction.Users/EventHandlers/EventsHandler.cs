@@ -4,12 +4,12 @@ using MassTransit;
 
 namespace LiveAuction.Users.EventHandlers
 {
-    public class UserEventHandler : IEventHandler
+    public class EventsHandler : IEventsHandler
 
     {
         private readonly IUserDataWriteService _userService;
 
-        public UserEventHandler(IUserDataWriteService userService)
+        public EventsHandler(IUserDataWriteService userService)
         {
             _userService = userService;
         }
