@@ -24,5 +24,21 @@ namespace LiveAuction.GatewayAPI.Controllers
 
             return Accepted();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetBiddings()
+        {
+            var result = await _biddingService.GetBiddingsAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet("{biddingId}")]
+        public async Task<IActionResult> GetBidding(Guid biddingId)
+        {
+            var result = await _biddingService.GetBiddingAsync(biddingId);
+
+            return Ok(result);
+        }
     }
 }

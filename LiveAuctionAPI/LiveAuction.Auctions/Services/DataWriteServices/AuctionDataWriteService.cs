@@ -1,5 +1,4 @@
-﻿using LiveAuction.Auctions.Models;
-using LiveAuction.Auctions.Services.MongoDbService;
+﻿using LiveAuction.Auctions.Services.MongoDbService;
 using LiveAuction.Common.DTO;
 
 namespace LiveAuction.Auctions.Services.DataWriteServices
@@ -38,13 +37,24 @@ namespace LiveAuction.Auctions.Services.DataWriteServices
             }
 
             auction.IsCompleted = true;
+            auction.CurrentHighestBidding.IsActive = false;
+
+            foreach (var bidding in auction.Biddings ?? new List<BiddingDTO>())
+            {
+                bidding.IsActive = false;
+            }
 
             await _mongoDbService.UpdateAuctionAsync(auction);
         }
 
-        public async Task PlaceAuctionBiddingAsync(BiddingDTO bidding)
+        public async Task PlaceAuctionBiddingAsync(BiddingAuctionDTO bidding)
         {
-            var auction = await _mongoDbService.GetAuctionAsync(bidding.AuctionId);
+            if (bidding?.Auction == null)
+            {
+                throw new ArgumentException("Invalid bidding");
+            }
+
+            var auction = await _mongoDbService.GetAuctionAsync(bidding.Auction.Id);
 
             if (auction == null)
             {
@@ -61,10 +71,20 @@ namespace LiveAuction.Auctions.Services.DataWriteServices
                 throw new ArgumentException("The owner already has the highest bidding amount");
             }
 
-            auction.CurrentHighestBidding = bidding;
+            var biddingDto = new BiddingDTO
+            {
+                Id = bidding.Id,
+                Amount = bidding.Amount,
+                AuctionId = bidding.Auction.Id,
+                IsActive = bidding.IsActive,
+                Owner = bidding.Owner,
+                Timestamp = bidding.Timestamp
+            };
+
+            auction.CurrentHighestBidding = biddingDto;
 
             auction.Biddings ??= new List<BiddingDTO>();
-            auction.Biddings.Add(bidding);
+            auction.Biddings.Add(biddingDto);
 
             await _mongoDbService.UpdateAuctionAsync(auction);
         }

@@ -46,7 +46,7 @@ namespace LiveAuction.Auctions.Services.MongoDbService
         {
             var auctions = await _auctionRepository.GetAuctionsAsync();
 
-            var result = auctions.Select(a => a.ToDTO()).ToList();
+            var result = auctions?.Select(a => a.ToDTO()).ToList();
 
             return result;
         }

@@ -1,11 +1,9 @@
 ﻿using LiveAuction.Common.DTO;
 
-namespace LiveAuction.Gateway.Services.Services.Interfaces
+namespace LiveAuction.Gateway.Services.Clients.BiddingClient
 {
-    public interface IBiddingService
+    public interface IBiddingClient
     {
-        Task PlaceBiddingAsync(PlaceBiddingDTO bidding);
-
         Task<BiddingAuctionDTO?> GetBiddingAsync(Guid biddingId);
 
         Task<IEnumerable<BiddingAuctionDTO>?> GetBiddingsAsync();

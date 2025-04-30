@@ -1,6 +1,7 @@
 using LiveAuction.Common.Utils;
 using LiveAuction.Gateway.Services.Clients;
 using LiveAuction.Gateway.Services.Clients.AuctionClient;
+using LiveAuction.Gateway.Services.Clients.BiddingClient;
 using LiveAuction.Gateway.Services.Clients.UserClient;
 using LiveAuction.Gateway.Services.Services;
 using LiveAuction.Gateway.Services.Services.Interfaces;
@@ -62,6 +63,7 @@ namespace LiveAuction.GatewayAPI
             // Clients
             builder.Services.AddScoped<IUserClient, UserClient>();
             builder.Services.AddScoped<IAuctionClient, AuctionClient>();
+            builder.Services.AddScoped<IBiddingClient, BiddingClient>();
 
             // Auth
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();

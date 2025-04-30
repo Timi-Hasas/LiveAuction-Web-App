@@ -11,7 +11,7 @@ namespace LiveAuction.Auctions.Services.DataWriteServices
 
         Task DeleteAuctionAsync(Guid auctionId);
 
-        Task PlaceAuctionBiddingAsync(BiddingDTO bidding);
+        Task PlaceAuctionBiddingAsync(BiddingAuctionDTO bidding);
 
         Task CompleteAuctionAsync(Guid auctionId);
     }
