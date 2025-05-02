@@ -27,9 +27,12 @@ namespace LiveAuction.Gateway.Services.Services
             return await _biddingClient.GetBiddingAsync(biddingId);
         }
 
-        public async Task<IEnumerable<BiddingAuctionDTO>?> GetBiddingsAsync()
+        public async Task<IEnumerable<BiddingAuctionDTO>?> GetBiddingsAsync(Guid? ownerId, int? skip = 0, int? take = 10)
         {
-            return await _biddingClient.GetBiddingsAsync();
+            skip ??= 0;
+            take ??= 10;
+
+            return await _biddingClient.GetBiddingsAsync(ownerId, skip, take);
         }
 
         public async Task PlaceBiddingAsync(PlaceBiddingDTO bidding)

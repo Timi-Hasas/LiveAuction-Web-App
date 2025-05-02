@@ -6,6 +6,6 @@ namespace LiveAuction.Auctions.Services.DataReadServices
     {
         Task<AuctionBiddingDTO?> GetAuctionAsync(Guid auctionId);
 
-        Task<List<AuctionBiddingDTO>?> GetAuctionsAsync();
+        Task<List<AuctionBiddingDTO>?> GetAuctionsAsync(Guid? ownerId, int? skip = 0, int? take = 10);
     }
 }

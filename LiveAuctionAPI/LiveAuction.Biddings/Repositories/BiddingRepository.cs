@@ -28,9 +28,13 @@ namespace LiveAuction.Biddings.Repositories
             return await _biddingsCollection.Find(b => b.Id == biddingId).FirstOrDefaultAsync();
         }
 
-        public async Task<List<Bidding>?> GetBiddingsAsync()
+        public async Task<List<Bidding>?> GetBiddingsAsync(Guid? ownerId, int? skip = 0, int? take = 10)
         {
-            return await _biddingsCollection.Find(_ => true).ToListAsync();
+            return await _biddingsCollection
+                .Find(b => b.Owner.Id == ownerId.GetValueOrDefault() || ownerId == null)
+                .Skip(skip)
+                .Limit(take)
+                .ToListAsync();
         }
     }
 }

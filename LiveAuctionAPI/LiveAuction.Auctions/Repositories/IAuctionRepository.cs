@@ -6,7 +6,7 @@ namespace LiveAuction.Auctions.Repositories
     {
         Task<Auction?> GetAuctionAsync(Guid auctionId);
 
-        Task<List<Auction>?> GetAuctionsAsync();
+        Task<List<Auction>?> GetAuctionsAsync(Guid? ownerId, int? skip = 0, int? take = 10);
 
         Task CreateAuctionAsync(Auction auction);
 

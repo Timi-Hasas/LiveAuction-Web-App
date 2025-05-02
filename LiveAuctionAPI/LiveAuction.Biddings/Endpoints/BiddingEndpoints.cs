@@ -1,4 +1,5 @@
 ﻿using LiveAuction.Biddings.Services.DataReadServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LiveAuction.Biddings.Endpoints
 {
@@ -8,8 +9,8 @@ namespace LiveAuction.Biddings.Endpoints
         {
             var userEndpoints = app.MapGroup("/api/v1/biddings");
 
-            userEndpoints.MapGet("", async (IBiddingDataReadService biddingService)
-                => Results.Ok(await biddingService.GetBiddingsAsync()));
+            userEndpoints.MapGet("", async ([FromQuery] Guid? ownerId, [FromQuery] int? skip, [FromQuery] int? take, IBiddingDataReadService biddingService)
+                => Results.Ok(await biddingService.GetBiddingsAsync(ownerId, skip, take)));
 
             userEndpoints.MapGet("/{biddingId}",
                 async (Guid biddingId, IBiddingDataReadService biddingService) =>

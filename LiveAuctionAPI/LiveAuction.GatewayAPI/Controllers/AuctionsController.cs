@@ -18,9 +18,9 @@ namespace LiveAuction.GatewayAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAuctions()
+        public async Task<IActionResult> GetAuctions([FromQuery] Guid? ownerId, [FromQuery]  int? skip = 0, [FromQuery] int? take = 10)
         {
-            var result = await _auctionService.GetAuctionsAsync();
+            var result = await _auctionService.GetAuctionsAsync(ownerId, skip, take);
 
             return Ok(result);
         }

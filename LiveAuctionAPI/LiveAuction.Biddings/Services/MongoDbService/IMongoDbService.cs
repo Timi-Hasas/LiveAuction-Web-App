@@ -6,7 +6,7 @@ namespace LiveAuction.Biddings.Services.MongoDbService
     {
         Task<BiddingAuctionDTO?> GetBiddingAsync(Guid biddingId);
 
-        Task<List<BiddingAuctionDTO>?> GetBiddingsAsync();
+        Task<List<BiddingAuctionDTO>?> GetBiddingsAsync(Guid? ownerId, int? skip = 0, int? take = 10);
 
         Task CreateBiddingAsync(BiddingAuctionDTO bidding);
 

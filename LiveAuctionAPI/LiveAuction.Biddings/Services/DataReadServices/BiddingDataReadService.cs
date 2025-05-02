@@ -17,9 +17,12 @@ namespace LiveAuction.Biddings.Services.DataReadServices
             return await _mongoDbService.GetBiddingAsync(biddingId);
         }
 
-        public async Task<List<BiddingAuctionDTO>?> GetBiddingsAsync()
+        public async Task<List<BiddingAuctionDTO>?> GetBiddingsAsync(Guid? ownerId, int? skip = 0, int? take = 10)
         {
-            return await _mongoDbService.GetBiddingsAsync();
+            skip ??= 0;
+            take ??= 10;
+
+            return await _mongoDbService.GetBiddingsAsync(ownerId, skip, take);
         }
     }
 }

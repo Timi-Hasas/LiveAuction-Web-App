@@ -37,9 +37,9 @@ namespace LiveAuction.Biddings.Services.MongoDbService
             return result.ToDTO();
         }
 
-        public async Task<List<BiddingAuctionDTO>?> GetBiddingsAsync()
+        public async Task<List<BiddingAuctionDTO>?> GetBiddingsAsync(Guid? ownerId, int? skip = 0, int? take = 10)
         {
-            var result = await _biddingRepository.GetBiddingsAsync();
+            var result = await _biddingRepository.GetBiddingsAsync(ownerId, skip, take);
 
             return result?.Select(b => b.ToDTO()).ToList();
         }
