@@ -86,7 +86,7 @@ namespace LiveAuction.Auctions.Models
             currentAuction.IsCompleted = auction.IsCompleted;
             currentAuction.CurrentHighestBidding = (new Bidding())?.FromDTO(auction.CurrentHighestBidding);
             currentAuction.Owner = (new Owner()).FromDTO(auction.Owner);
-            currentAuction.Biddings = auction.Biddings.Select(b => new Bidding()?.FromDTO(b)).ToList();
+            currentAuction.Biddings = auction.Biddings?.Select(b => new Bidding()?.FromDTO(b)).ToList();
 
             return currentAuction;
         }

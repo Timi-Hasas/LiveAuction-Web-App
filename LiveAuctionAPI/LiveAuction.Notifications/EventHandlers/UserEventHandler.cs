@@ -7,7 +7,7 @@ namespace LiveAuction.Notifications.EventHandlers
     {
         public async Task Consume(ConsumeContext<UserCreated> context)
         {
-            Console.WriteLine("da");
+            throw new NotImplementedException();
         }
 
         public Task Consume(ConsumeContext<UserDeleted> context)

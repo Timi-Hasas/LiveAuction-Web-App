@@ -20,7 +20,7 @@ namespace LiveAuction.Gateway.Services.Services
         }
         public async Task CreateUserAsync(UserConfidentialDTO user)
         {
-            var conflictingUser = _userClient.GetUserByEmailAsync(user.Email);
+            var conflictingUser = await _userClient.GetUserByEmailAsync(user.Email);
             if (conflictingUser != null)
             {
                 throw new AppException("An user with this email already exists");
@@ -63,10 +63,10 @@ namespace LiveAuction.Gateway.Services.Services
 
         public async Task UpdateUserAsync(UserConfidentialDTO user)
         {
-            var conflictingUser = _userClient.GetUserByEmailAsync(user.Email);
+            var conflictingUser = await _userClient.GetUserByEmailAsync(user.Email);
             if (conflictingUser != null)
             {
-                throw new ArgumentException("An user with this email already exists");
+                throw new AppException("An user with this email already exists");
             }
 
             user.Password = BCryptNet.HashPassword(user.Password).ToString();

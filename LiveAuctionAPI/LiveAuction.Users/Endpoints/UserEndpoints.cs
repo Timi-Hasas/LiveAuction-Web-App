@@ -28,9 +28,7 @@ namespace LiveAuction.Users.Endpoints
             {
                 var result = await userService.GetUserByEmailAsync(email);
 
-                return result == null
-                    ? Results.NotFound()
-                    : Results.Ok(result);
+                return Results.Ok(result);
             });
         }
     }
